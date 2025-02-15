@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Retro Site!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #00ff00;
+            font-family: "Courier New", monospace;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 0 0 10px #00ff00;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite;
+        }
+        .menu {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .menu-item {
+            background: #000;
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .menu-item:hover {
+            background: #00ff00;
+            color: #000;
+            transform: scale(1.1);
+        }
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px #00ff00; }
+            50% { text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00; }
+        }
+        .welcome-text {
+            font-size: 1.5em;
+            margin: 20px 0;
+            opacity: 0;
+            animation: fadeIn 2s forwards 1s;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        .counter {
+            font-size: 0.8em;
+            margin-top: 40px;
+            color: #666;
+        }
+        .content-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00ff00;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            display: none;
+            z-index: 2;
+        }
+        .content-box.active {
+            display: block;
+            animation: boxAppear 0.5s forwards;
+        }
+        @keyframes boxAppear {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 5px 10px;
+            background: none;
+        }
+        .close-btn:hover {
+            background: #00ff00;
+            color: #000;
+        }
+        .content-box h2 {
+            margin-top: 0;
+            color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+    <div class="container">
+        <h1>WELCOME TO MY SITE</h1>
+        <div class="welcome-text">
+            [ Enter the Matrix ]
+        </div>
+        <div class="menu">
+            <a class="menu-item" data-section="home">HOME</a>
+            <a class="menu-item" data-section="about">ABOUT</a>
+            <a class="menu-item" data-section="contact">CONTACT</a>
+        </div>
+        <div class="counter">
+            Visitors: 000,001
+        </div>
+    </div>
+
+    <!-- Content boxes for each section -->
+    <div id="home-content" class="content-box">
+        <button class="close-btn">X</button>
+        <h2>HOME</h2>
+        <p>Welcome to my cyber realm...</p>
+        <div class="home-animation"></div>
+    </div>
+
+    <div id="about-content" class="content-box">
+        <button class="close-btn">X</button>
+        <h2>ABOUT</h2>
+        <p>Exploring the digital frontier...</p>
+        <div class="about-animation"></div>
+    </div>
+
+    <div id="contact-content" class="content-box">
+        <button class="close-btn">X</button>
+        <h2>CONTACT</h2>
+        <p>Establish connection...</p>
+        <div class="contact-animation"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
